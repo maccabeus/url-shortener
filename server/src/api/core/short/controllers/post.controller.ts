@@ -25,11 +25,12 @@ export const addShortLink = async (request: Request, response: Response, next: N
     try {
         const postData: any = { url, shortLink: link.shortLink, key: link.key };
         const insertRecordData: any = await insertRecord(urlTable, postData);
+        console.log("link ", link);
+        console.log("insert record ", insertRecordData);
         const { error, message } = insertRecordData;
         if (error) {
             return formatResponse(response, true, message);
         }
-        console.log("link: ", link);
         const clientMessage = "Url short link created";
         return formatResponse(response, false, clientMessage, { shortLink: postData.shortLink });
     } catch (e: any) {

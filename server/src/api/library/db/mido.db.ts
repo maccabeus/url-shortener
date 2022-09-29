@@ -107,6 +107,13 @@ export class MidoDb {
         {
             if (!dbName || !baseTable) return null;
 
+            const collections = await client.db(dbName).collections();
+            if (!collections || collections.length <= 0) {
+                client.db(dbName).createCollection(baseTable, function (err: any, result: any) {
+                    if (err) { throw new Error() }
+                    console.log("collections created");
+                });
+            }
             /* create a table for connection */
             const table = await client.db(dbName).collection(baseTable);
             if (!table)
@@ -125,6 +132,7 @@ export class MidoDb {
      * @returns 
      */
     selectRecord = async (baseTable: string, query: any, project = false, projections = {}, limit = 0) => new Promise(async (resolve, reject) => {
+
         this.openTable(this.dbClient, this.getDbName(), baseTable)
             .then(async (curCollection: any) => {
                 if (project === true) {
