@@ -8,7 +8,7 @@ ENV NODE_ENV=production
 # Create our app working directory
 WORKDIR /usr/src/app
 
-# expose port 4000 for binding`
+# expose port 4001 for binding`
 EXPOSE 4001
 
 # copy the packages files

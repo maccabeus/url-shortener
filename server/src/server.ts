@@ -13,7 +13,7 @@ const app: Express = express();
  *  router within the application are declared in this module
  * */
 dotEnv.config();
-const port: number | string = process.env.PORT || 4000;
+const port: number | string = process.env.PORT || 4001;
 /** application host */
 const host: string = process.env.HOST || "http://localhost";
 const shortLinkLength: number | string = process.env.MAX_URL_LEN || 10;
@@ -39,7 +39,7 @@ app.listen(port, () => {
  * And finally, start the UrlService. This service runs in the background
  * and generate validated keys for our application usage
  * 
- * @note In the right context, this service will run in a separate, but for the 
+ * @note In the right context, this service will run  as a separate `microservice`, but for the 
  * sake of simplicity, I have added it as part of the server application
  */
 const urlService = UrlService.getInstance();
