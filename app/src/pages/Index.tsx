@@ -37,6 +37,7 @@ const Index: FC<any> = (): ReactElement => {
 
             const apiPath = `${API_BASE_PATH}${SHORT_PATH}`;
             const responseData = await apiPostService(apiPath, { url: urlText });
+            console.log("response: ", responseData);
             const { error, message, data } = responseData;
             if (error) {
                 showErrorAlert(message);

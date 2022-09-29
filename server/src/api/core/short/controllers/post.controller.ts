@@ -8,6 +8,7 @@ import { ShortLinkData, UrlService } from '../../../library/url-service/url-serv
 
 export const addShortLink = async (request: Request, response: Response, next: NextFunction) => {
     const predicate = (data: any) => isValidUrl(data);
+    console.log("running");
     const { valid, message } = isValidClientData(
         request.body,
         [{
@@ -18,6 +19,7 @@ export const addShortLink = async (request: Request, response: Response, next: N
         return formatResponse(response, true, message);
     }
     const { url } = request.body;
+    console.log("data: ", url);
     const urlService = UrlService.getInstance();
     const link: ShortLinkData = urlService.getShortLink(request.hostname, request.protocol);
     try {
@@ -27,6 +29,7 @@ export const addShortLink = async (request: Request, response: Response, next: N
         if (error) {
             return formatResponse(response, true, message);
         }
+        console.log("link: ", link);
         const clientMessage = "Url short link created";
         return formatResponse(response, false, clientMessage, { shortLink: postData.shortLink });
     } catch (e: any) {
