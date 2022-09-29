@@ -13,7 +13,7 @@ To run the Application, you either run directly or create a `docker` image.
 To create an image of our application locally, run the following command:
 
 ```bash
-docker build -t maccabeus/url-shortener-server .
+docker build -t maccabeus/url-shortener-app .
 ```
 
 #### Running the Docker Image
@@ -21,7 +21,7 @@ docker build -t maccabeus/url-shortener-server .
 To run application, enter the following command. Please `note` that you must have installed `Docker Desktop` before you can perform these steps.
 
 ```bash
-docker run -dp 3000:3000  maccabeus/url-shortener-server:latest
+docker run -dp 3000:3000  maccabeus/url-shortener-app:latest
 ```
 
 Or you can also use `docker-compose` command to run the application from the application directory

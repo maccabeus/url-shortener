@@ -77,7 +77,9 @@ export class UrlService {
                 if (!valid) {
                     delete UrlService.keyCache[shortLink]
                 } else {
-                    UrlService.keyCache[shortLink].enabled = true;
+                    if (UrlService?.keyCache && UrlService.keyCache[shortLink]) {
+                        UrlService.keyCache[shortLink].enabled = true
+                    };
                 }
                 createAndValidateKey();
             });

@@ -20,6 +20,7 @@ export const useFormStyles = makeStyles((theme: Theme) =>
       borderColor: BASE_APP_COLOR_LIGHT,
       marginBottom: FORM_INPUT_MARGIN * 2,
       paddingLeft: FORM_INPUT_MARGIN * 3,
+      paddingRight: FORM_INPUT_MARGIN * 3,
       border: "none",
     }
   })

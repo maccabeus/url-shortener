@@ -109,15 +109,20 @@ export class MidoDb {
 
             const collections = await client.db(dbName).collections();
             if (!collections || collections.length <= 0) {
-                client.db(dbName).createCollection(baseTable, function (err: any, result: any) {
-                    if (err) { throw new Error() }
-                    console.log("collections created");
-                });
+                console.log("collections created", collections);
+                await client.db(dbName).createCollection(baseTable);
             }
+            // if (!collections || collections.length <= 0) {
+            //     client.db(dbName).createCollection(baseTable, function (err: any, result: any) {
+            //         if (err) { throw new Error() }
+            //         console.log("collections created");
+            //     });
+            // }
             /* create a table for connection */
             const table = await client.db(dbName).collection(baseTable);
-            if (!table)
+            if (!table) {
                 reject("error")
+            }
             resolve(table);
         }
     })
