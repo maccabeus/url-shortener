@@ -106,17 +106,10 @@ export class MidoDb {
     openTable = (client: any, dbName: string | null, baseTable: string) => new Promise(async (resolve, reject) => {
         {
             if (!dbName || !baseTable) return null;
-
-            const collections = await client.db(dbName).collections();
-            if (!collections || collections.length <= 0) {
-                console.log("collections created", collections);
-                await client.db(dbName).createCollection(baseTable);
-            }
+            // const collections = await client.db(dbName).collections();
             // if (!collections || collections.length <= 0) {
-            //     client.db(dbName).createCollection(baseTable, function (err: any, result: any) {
-            //         if (err) { throw new Error() }
-            //         console.log("collections created");
-            //     });
+            //     console.log("collections created", collections);
+            //     await client.db(dbName).createCollection(baseTable);
             // }
             /* create a table for connection */
             const table = await client.db(dbName).collection(baseTable);

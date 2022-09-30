@@ -91,7 +91,7 @@ export class UrlService {
         }
     }
 
-    private getNextShortLink = (hostName: string, protocol: string, port: any = null): ShortLinkData => {
+    private getNextShortLink = (hostName: string, protocol: string, port: any = 4001): ShortLinkData => {
         const key: string = Object.keys(UrlService.keyCache)[0];
         const shortLinkCode: any = UrlService.keyCache[key].shortLink;
         /** delete this key. We only use key once */
@@ -102,7 +102,7 @@ export class UrlService {
         if (Object.keys(UrlService.keyCache).length <= UrlService.MIN_CACHE_SIZE) {
             this.generateCachedShortLinks();
         }
-        const shortLink = `${protocol}://${hostName}:4000/${shortLinkCode}`;
+        const shortLink = `${protocol}://${hostName}:${port}/${shortLinkCode}`;
         return ({ shortLink, key: shortLinkCode });
     }
     private generateLink = (maxLength: number, seed: string) => {
