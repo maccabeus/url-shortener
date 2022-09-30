@@ -59,6 +59,7 @@ const Index: FC<any> = (): ReactElement => {
             setLoading(false);
         } catch (err: any) {
             setAlertProps({ ...alertProps, message: err.message, open: true, type: "error", action: <></> })
+            setLoading(false);
         }
     }
 
